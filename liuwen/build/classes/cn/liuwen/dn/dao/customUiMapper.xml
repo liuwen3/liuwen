@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.liuwen.dn.dao.customUiMapper" >
+  <resultMap id="customUiResultMap" type="cn.liuwen.dn.entity.customUi" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="custom_k" property="customK" jdbcType="VARCHAR" />
+    <result column="custom_name" property="customName" jdbcType="VARCHAR" />
+    <result column="custom_auth" property="customAuth" jdbcType="VARCHAR" />
+    <result column="custom_time" property="customTime" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <!-- 通过多条件分页查询，返回数据集 -->
+  <select id="selectPageListUseDyc" parameterType="page" resultMap="customUiResultMap" >
+    select * from customui
+    
+  </select>
+  
+  <!-- 通过多条件分页查询，返回总记录数 -->
+  <select id="selectPageCountUseDyc" parameterType="page" resultType="Integer">
+  	select count(1) from customui 
+  </select>
+</mapper>
