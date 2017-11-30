@@ -1,3 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/custom/addcustomUi.jsp=UTF-8
+encoding//WebContent/WEB-INF/custom/customUiList.jsp=UTF-8
 encoding//src/cn/liuwen/dn/entity/Users.java=UTF-8
 encoding/<project>=UTF-8

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
+import org.springframework.web.servlet.ModelAndView;
 import cn.liuwen.dn.entity.Page;
 import cn.liuwen.dn.entity.customUi;
 import cn.liuwen.dn.service.CustomUiService;
@@ -29,6 +29,35 @@ public class customUiController extends BaseAction {
 			System.out.println("-------"+p);
 		
 		return p.getPageMap();
+	}
+	  @RequestMapping(value = "toaddCustom")
+	  public ModelAndView toaddCustom(customUi ui) throws Exception {
+	    ModelAndView mav = new ModelAndView();
+	    try {
+	      mav.addObject("customUi", ui);
+	      mav.setViewName("/WEB-INF/custom/addcustomUi.jsp");
+	    } catch (Exception e) {
+	      mav.setViewName("errorPage");
+	    }
+	   
+	    return mav;
+	  }
+	
+	@RequestMapping(value="/addCustom")
+	@ResponseBody
+	public Object addCustom(customUi cus,HttpServletRequest request, HttpServletResponse response){
+		String mes = "er";
+		System.out.println("开始");
+	try{
+		customUiService.addCustom(cus);
+		mes = "su";
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+			 
+			System.out.println("结束");
+		
+		return mes;
 	}
 	
 }

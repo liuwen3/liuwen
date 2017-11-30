@@ -43,6 +43,8 @@
 <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>/js/*</url-pattern><!-- 静态资源加载（WebContent目录下） -->
+    <url-pattern>/img/*</url-pattern><!-- 静态资源加载（WebContent目录下） -->
+    <url-pattern>/bootstrap3.2.2/*</url-pattern><!-- 静态资源加载（WebContent目录下） -->
       <url-pattern>/easyui/*</url-pattern><!-- 静态资源加载（WebContent目录下） -->
   </servlet-mapping>
 </web-app>

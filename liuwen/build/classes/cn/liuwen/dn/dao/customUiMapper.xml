@@ -19,4 +19,8 @@
   <select id="selectPageCountUseDyc" parameterType="page" resultType="Integer">
   	select count(1) from customui 
   </select>
+  <!-- 根据主键修改供应商信息 -->
+	<update id="addCustom" parameterType="customUi" >
+		insert into customUi values(#{customK},#{customName},#{customAuth},#{customTime})	
+	</update>
 </mapper>

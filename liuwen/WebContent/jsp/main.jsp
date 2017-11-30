@@ -5,9 +5,9 @@
 
 </head>
 <body class="easyui-layout">   
-    <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>   
-    <div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div>   
-    <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true" style="width:100px;"></div>   
+    <div data-options="region:'north'" style="height:100px;"><div style="height:90px;background-image: url('${proPath}/img/mainStyle.jpg')"></div></div>   
+    <!-- <div data-options="region:'south',title:'South Title',split:true" style="height:100px;"></div> -->   
+   <!--  <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true" style="width:100px;"></div>    -->
     <div data-options="region:'west',title:'West',split:true" style="width:180px;">
     <div class="easyui-accordion" data-options="fit:true,border:false">
     <div title="用户管理">
@@ -61,34 +61,32 @@ function mainpage_showRight(_this){
 	return false;
 	
 }
-
-
- /* $(function() {
-	$("a[title]").click(function() {
-		var text = this.href;
-		alert(text+'---'+this.title);
-		//判断是否存在
-		if($('#tt1').tabs("exists",this.title)){
-		//存在则选中
-			alert("存在了");
-			$('#tt1').tabs("select",this.title);			
-		}else{
-			$('#tt1').tabs('add', {
-				title:this.title,
-				//面板有关闭按键
-			    closable:true, 
-			    //href对远程页面js的支持不好 
-				//href: text			
-				//可以加载内容填充到选项卡，页面有Js时，也可加载
-				content:"<iframe src='"+text+"' title='"+this.title+"' height='100%' width='100%' frameborder='0px' ></iframe>"
-					   
-			
-			});
-			
-		}
-		return false;
-		
-	});
-}); */
+//主界面封装弹出框
+function tck(zsflmc,w,h,url_tck){
+	var t = $('<div style="overflow: hidden;"></div>').appendTo($("body"));
+    $(t).window({
+      title :  zsflmc,
+      iconCls : 'icon-add2',
+      width : w,
+      height : h,
+      draggable : true,
+      collapsible : false,
+      minimizable : false,
+      maximizable : true,
+      resizable : false,
+      href : url_tck,
+      modal : true,
+      onClose : function() {
+        $('#knowLedgeList_table').datagrid('reload');
+        $(t).window('destroy', true);
+        $(t).remove();
+        $(".window-shadow").remove();
+        $(".window-mask").remove();
+      }
+    });
+    CloseWindow = function() {
+      $(t).window('close');
+    };
+}
 </script>
 </html>
