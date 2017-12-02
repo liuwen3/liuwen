@@ -1,0 +1,1 @@
+alter table customui add custom_index varchar(64) not Null;
