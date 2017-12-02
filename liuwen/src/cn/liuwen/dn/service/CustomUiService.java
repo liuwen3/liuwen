@@ -8,7 +8,9 @@ import cn.liuwen.dn.entity.customUi;
 
 public interface CustomUiService extends BaseService<customUi> {
 
-	public Page addCustom(customUi cus) throws Exception;;
+	public void addCustom(customUi cus) throws Exception;
+
+	//public Page<customUi> selectMainPage() throws Exception;
 
 
 }

@@ -14,9 +14,14 @@ public class customUiServiceImpl extends BaseServiceImpl<customUi> implements Cu
 	@Autowired
 	protected  customUiMapper customUiMapper;
 	@Override
-	public Page addCustom(customUi cus) throws Exception {
+	public void addCustom(customUi cus) throws Exception {
 		// TODO Auto-generated method stub
-		return customUiMapper.addCustom(cus);
+		customUiMapper.addCustom(cus);
 	}
+	/*@Override
+	public Page<customUi> selectMainPage() throws Exception {
+		// TODO Auto-generated method stub
+		return customUiMapper.selectMainPage();
+	}*/
 
 }

@@ -29,21 +29,16 @@
 		            addjiemian();
 		          }
 		        }, {
-		          text : '修改界面名称',
-		          iconCls : 'icon-knowledge_dlpx',
-		          handler : function() {
-		            editorjiemian();
-		          }
-		        }, {
 		          text : '删除界面',
 		          iconCls : 'icon-book_open',
 		          handler : function() {
 		            deletejiemian();
 		          }
 		        }],
-		      columns : [[ {field:'customName',title:'UI名称',width:'35%'},   
-		                   {field:'customAuth',title:'制造者',width:'30%'}, 
-	                       {field:'customTime',title:'上传时间',width:'30%',
+		      columns : [[ {field:'customName',title:'UI名称',width:'30%'},   
+		                   {field:'customAuth',title:'制造者',width:'25%'}, 
+		                   {field:'customIndex',title:'页面名称',width:'20%'}, 
+	                       {field:'customTime',title:'上传时间',width:'20%',
 		        			
 		        			} ]]
 		    });
@@ -67,7 +62,7 @@
 	       href : url_tck,
 	       modal : true,
 	       onClose : function() {
-	         $('#knowLedgeList_table').datagrid('reload');
+	         $('#jiemian').datagrid('reload');
 	         $(t).window('destroy', true);
 	         $(t).remove();
 	         $(".window-shadow").remove();
@@ -80,8 +75,8 @@
 	 }
 	 function addjiemian(){
 		 var bt = "添加风格";
-		 var h = 300;
-		 var w = 450;
+		 var h = 270;
+		 var w = 410;
 		 var url = "${proPath}/custom/toaddCustom";
 		 tck(bt,w,h,url);
 	 } 

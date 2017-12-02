@@ -1,167 +1,150 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="/common/common.jspf"%>
+<html lang="en">
 <head>
-<c:set var="proPath" value="${pageContext.request.contextPath}" />
-<link rel="stylesheet" type="text/css"href="${proPath}/easyui/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="${proPath}/easyui/themes/icon.css">
-<script type="text/javascript" src="${proPath}/js/jquery-3.2.1.min.js"></script>
- <link rel="stylesheet" href="${proPath}/bootstrap3.2.2/css/bootstrap.min.css" >
-<script type="text/javascript" src="${proPath}/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="${proPath}/easyui/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="${proPath}/bootstrap3.2.2/js/bootstrap.min.js" ></script>
-<style type="text/css">
-body{
+<meta charset="UTF-8">
+<title>CSS Login form</title>
 
-	background-repeat: no-repeat;
 
-	background-position: center 0 #000;
 
-	background-color: #000;
-
-	background-image: url(${proPath}/img/a.jpg);
-
+<link rel="stylesheet" href="css/style.css">
+<style>
+body {
+	background-color: rgba(255, 203, 96, 0.5);
 }
 
-.snowbg{width:1000px;height:600px;clear:both;margin:0 auto;position:relative;overflow:hidden;}
+#boxForm {
+	background-color: rgb(255, 203, 96);
+	width: 340px;
+	position: relative;
+	left: 50vw;
+	margin-left: -170px;
+	box-shadow: 1px 1px 8px rgba(244, 102, 27, 1);
+}
 
-.snow{position:absolute;top:0;color:#fff;}
+#boxForm #title {
+	font-family: 'Nothing You Could Do', cursive;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 30px;
+}
+
+#boxForm form {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.text {
+	padding: 10px;
+	width: 250px;
+	margin-top: 10px;
+	border-style: none;
+	border-bottom-style: solid;
+	border-color: rgb(244, 102, 27);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	color: rgb(244, 102, 27);
+	background-color: rgb(255, 203, 96);
+}
+
+.text:focus {
+	background-color: rgba(255, 255, 255, 0.2);
+	border-style: none;
+	outline: none; /* to delete blue outline*/
+}
+
+#pwd {
+	margin-bottom: 5px;
+}
+
+/* Custom  placeholder */
+::-webkit-input-placeholder {
+	color: rgb(244, 102, 27);
+	font-weight: bold;
+	font-size: 16px;
+}
+
+::-moz-placeholder {
+	color: rgb(244, 102, 27);
+	font-weight: bold;
+	font-size: 16px;
+} /* firefox 19+ */
+:-ms-input-placeholder {
+	color: rgb(244, 102, 27);
+	font-weight: bold;
+	font-size: 16px;
+} /* ie */
+input:-moz-placeholder {
+	color: rgb(244, 102, 27);
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#rememberMe {
+	float: left;
+	margin-left: 40px;
+}
+
+form label {
+	float: left;
+	margin-left: 5px;
+	color: rgb(244, 102, 27);
+	font-family: 'Montserrat', sans-serif;
+	font-size: 12px;
+}
+
+#pwd {
+	margin-bottom: 15px;
+}
+
+.button {
+	padding: 10px;
+	width: 150px;
+	/* Background par colorzilla.com */
+	background: rgb(255, 175, 75); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(255, 175, 75, 1) 0%,
+		rgba(255, 146, 10, 1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255,
+		175, 75, 1)), color-stop(100%, rgba(255, 146, 10, 1)));
+	/* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(255, 175, 75, 1) 0%,
+		rgba(255, 146, 10, 1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(255, 175, 75, 1) 0%,
+		rgba(255, 146, 10, 1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(255, 175, 75, 1) 0%,
+		rgba(255, 146, 10, 1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(255, 175, 75, 1) 0%,
+		rgba(255, 146, 10, 1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b',
+		endColorstr='#ff920a', GradientType=0); /* IE6-9 */
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	border-style: none;
+	box-shadow: 1px 1px rgba(244, 102, 27, 1);
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	margin: 20px;
+	margin-left: -28px;
+}
 </style>
+
 </head>
+
 <body>
-<div class="snowbg">
-<button onclick="loginAdmin()" data-target="#myModal" data-toggle="modal" type="button" class="btn btn-default">点击登录</button>
-</div>
- <!-- <div id="loginDiv"  class="easyui-window" title="My Window" style="width:400px;height:200px"   
-        data-options="iconCls:'icon-save',modal:true">   
-    <form id="ff" action="main/checkUser" method="post">
-    
-     <table width="100%">
-        <tr style="height: 50px;">
-          <td>
-            &nbsp&nbsp用户名称：<input class="easyui-textbox" type="text" value="111"	id ="userName"style="width:200px" name="userName">
-          </td>
-        </tr>
-        <tr style="height: 50px;">
-          <td>
-            &nbsp&nbsp用户密码：<input class="easyui-textbox" type="text" value="111"	id ="userPass"style="width:200px" name="userPass">
-          </td>
-        </tr>
-        
-      </table>
-	
-	</form>   
-</div>   -->
-	
+	<div id="boxForm">
+		<h2 id="title">My Login Form</h2>
+		<form action="${proPath}/main/checkUser" method="post">
+<input class='text' type='text' value="qqq" name='userName' placeholder='username'required> <br> 
+<input class='text' id='pwd'type='Password' name='userPass' value = "qqq" placeholder='Password' required> <br>
+<input id='rememberMe' name='11a' type='checkbox'> 
+<label>Rememberme</label> <br> <input class='button' type='submit' value='Connection'>
+		</form>
+	</div>
+
+	<script></script>
+
 </body>
-<script type="text/javascript">
-$(function(){
-
-	  //var d="<div class='snow'>❅<div>"
-    var d="<div class='snow'>666<div>"
-				setInterval(function(){
-
-					var f=$(document).width();
-
-					var e=Math.random()*f-100;
-
-					var o=0.3+Math.random();
-
-					var fon=10+Math.random()*30;
-
-					var l = e - 100 + 200 * Math.random();
-
-					var k=2000 + 5000 * Math.random();
-
-					$(d).clone().appendTo(".snowbg").css({
-
-						left:e+"px",
-
-						opacity:o,
-
-						"font-size":fon,
-
-					}).animate({
-
-					  top:"400px",
-
-						left:l+"px",
-
-						opacity:0.1,
-
-					},k,"linear",function(){$(this).remove()})
-
-				},200)
-
-	})
-	
-	//点击弹出框  使用easyUI
-	function loginAdmin(){
-	var form = '<form id="ff"action="main/checkUser"method="post"><table width="100%"><tr style="height: 50px;"><td>&nbsp&nbsp用户名称：<input class="easyui-textbox"type="text"value="111"id="userName"style="width:200px"name="userName"></td></tr><tr style="height: 50px;"><td>&nbsp&nbsp用户密码：<input class="easyui-textbox"type="text"value="111"id="userPass"style="width:200px"name="userPass"></td></tr></table></form><div style="margin-top: 15px;text-align: center;"><span class="easyui-linkbutton c8"style="width:100px;"onclick="login()">提交</span><span class="easyui-linkbutton c4"style="margin-left: 15px;width:100px;"onclick="clean()">清空</span></div>';
-var t = $('<div style="overflow: hidden;"></div>').appendTo($("body"));
-          $(t).window({
-            width : 335,
-            height : 230,
-            title : '登录',
-            draggable : true,
-            collapsible : false,
-            minimizable : false,
-            maximizable : false,
-            resizable : false,
-            content : form,
-            modal : true,
-            onClose : function() {
-              $(t).window('destroy', true);
-              $(t).remove();
-              $(".window-shadow").remove();
-              $(".window-mask").remove();
-            }
-          });
-}
-
-//点击提交from表单
-function login(){
-	$("#ff").submit();
-}
-//清空from表单
-function clean(){
-	$("#ff").form('clear');
-}
-	/* $('#loginDiv').dialog({
-		title : '登陆入口',
-		width : 350,
-		height : 250,
-		closed : false,
-		cache : false,
-		//设置关闭按钮可见
-		closable : false,
-		//模式化窗口.如果为true将锁屏
-		modal : true,
-		buttons:[{
-			text:'登陆',
-			handler:function(){
-				//alert("可以登陆了");
-				//启用验证
-				$("#ff").form("enableValidation");
-				//进行验证，通过就提交
-				if($("#ff").form("validate")){
-				//提交
-						$("#ff").submit();
-				
-				}
-				
-			}
-		},{
-			text:'取消',
-			handler:function(){
-
-		}
-		}]
-		
-	
-	
-})  */
-
-
-</script>
 </html>
+

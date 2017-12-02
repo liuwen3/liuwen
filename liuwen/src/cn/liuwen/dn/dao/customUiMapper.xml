@@ -6,6 +6,7 @@
     <result column="custom_k" property="customK" jdbcType="VARCHAR" />
     <result column="custom_name" property="customName" jdbcType="VARCHAR" />
     <result column="custom_auth" property="customAuth" jdbcType="VARCHAR" />
+     <result column="custom_index" property="customIndex" jdbcType="VARCHAR" />
     <result column="custom_time" property="customTime" jdbcType="VARCHAR" />
   </resultMap>
   
@@ -19,8 +20,12 @@
   <select id="selectPageCountUseDyc" parameterType="page" resultType="Integer">
   	select count(1) from customui 
   </select>
+   <!-- 通过多条件分页查询，返回总记录数 -->
+  <!-- <select id="selectPageCountUseDyc" parameterType="page" resultMap="customUiResultMap">
+  	select * from customui where custom_k = 'Y'
+  </select> -->
   <!-- 根据主键修改供应商信息 -->
 	<update id="addCustom" parameterType="customUi" >
-		insert into customUi values(#{customK},#{customName},#{customAuth},#{customTime})	
+		INSERT INTO `mybatis`.`customui` (`custom_k`, `custom_name`, `custom_auth`, `custom_time`, `custom_index`) VALUES (#{customK},#{customName},#{customAuth},#{customTime},#{customIndex})	
 	</update>
 </mapper>

@@ -15,6 +15,8 @@ public class customUi implements Serializable{
     private String customName;
 
     private String customAuth;
+    
+    private String customIndex;
 
     private String customTime;
 
@@ -34,7 +36,17 @@ public class customUi implements Serializable{
         this.customK = customK == null ? null : customK.trim();
     }
 
-    public String getCustomName() {
+   
+
+	public String getCustomIndex() {
+		return customIndex;
+	}
+
+	public void setCustomIndex(String customIndex) {
+		this.customIndex = customIndex;
+	}
+
+	public String getCustomName() {
         return customName;
     }
 

@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import cn.liuwen.dn.entity.Page;
 import cn.liuwen.dn.entity.customUi;
 import cn.liuwen.dn.service.CustomUiService;
+import cn.liuwen.dn.utils.SessionUtils;
 
 
 @Controller
@@ -49,6 +50,8 @@ public class customUiController extends BaseAction {
 		String mes = "er";
 		System.out.println("开始");
 	try{
+		cus.setCustomK("N");
+		cus.setCustomTime(SessionUtils.getSystemTime());
 		customUiService.addCustom(cus);
 		mes = "su";
 	}catch(Exception e){
