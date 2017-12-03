@@ -28,7 +28,7 @@
 		          handler : function() {
 		            addjiemian();
 		          }
-		        }
+		        
 		        }],
 		      columns : [[ {field:'customName',title:'UI名称',width:'30%'},   
 		                   {field:'customAuth',title:'制造者',width:'10%'}, 

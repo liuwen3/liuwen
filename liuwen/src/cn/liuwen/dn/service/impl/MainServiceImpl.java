@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.liuwen.dn.dao.UsersMapper;
+import cn.liuwen.dn.dao.customUiMapper;
 import cn.liuwen.dn.entity.Users;
+import cn.liuwen.dn.entity.customUi;
 import cn.liuwen.dn.service.MainService;
 
 
@@ -16,6 +18,8 @@ public class MainServiceImpl  implements MainService{
      @Autowired
      private UsersMapper userMapper;
  
+     @Autowired
+ 	 protected  customUiMapper customUiMapper;
 
 	@Override
 	public int checkUser(Users user) throws Exception {
@@ -36,6 +40,13 @@ public class MainServiceImpl  implements MainService{
 	public int searchUserCount() throws Exception {
 		// TODO Auto-generated method stub
 		return userMapper.searchUserCount();
+	}
+
+
+	@Override
+	public List<customUi> show() throws Exception {
+		// TODO Auto-generated method stub
+		return customUiMapper.show();
 	}
 
 }

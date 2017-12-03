@@ -77,8 +77,10 @@ public class mainController {
 	@RequestMapping(value="/show")
 	public String show(HttpServletRequest request, HttpServletResponse response)throws Exception {
 		System.out.println(1);
+		List<customUi> ui= mainService.show();
+		System.out.println(ui.get(0).getCustomIndex());
 		
-			return "forward:/WEB-INF/mainPage/mainPage1.jsp";
+			return "forward:/WEB-INF/mainPage/"+ui.get(0).getCustomIndex()+".jsp";
 		
 		
 	}

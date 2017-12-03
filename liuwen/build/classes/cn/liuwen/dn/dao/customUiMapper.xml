@@ -21,9 +21,9 @@
   	select count(1) from customui 
   </select>
    <!-- 通过多条件分页查询，返回总记录数 -->
-  <!-- <select id="selectPageCountUseDyc" parameterType="page" resultMap="customUiResultMap">
+   <select id="show" parameterType="page" resultMap="customUiResultMap">
   	select * from customui where custom_k = 'Y'
-  </select> -->
+  </select> 
   <!-- 根据主键修改供应商信息 -->
 	<update id="addCustom" parameterType="customUi" >
 		INSERT INTO `mybatis`.`customui` (`custom_k`, `custom_name`, `custom_auth`, `custom_time`, `custom_index`) VALUES (#{customK},#{customName},#{customAuth},#{customTime},#{customIndex})	
